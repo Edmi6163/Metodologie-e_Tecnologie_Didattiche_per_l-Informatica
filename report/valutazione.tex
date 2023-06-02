@@ -1,0 +1,122 @@
+\section{Valutazione}
+\textbf{BLOCK MODEL}:
+Una valutazione dell'esercizio di programmazione può essere basata sulla comprensione dei vari elementi del codice secondo il modello a blocchi, concentrandosi maggiormente sulle parti di "Function/Purpose".
+
+Infatti, ai fini dell'esercizio, è importante capire il funzionamento del codice, e quindi i blocchi function/purpose e in particolare quelli relativi a block, relationship e macrostructure, mentre ai fini della valutazione dell'attività didattica i blocchi relativi alla text surface e program execution non sono rilevanti in quanto l'apprendimento dello specifico linguaggio e della sua sintassi esula dagli scopi.
+Si riportano nel seguito alcune indicazioni dei blocchi da considerarsi per la strutturazione della valutazione:
+
+Macrostructure:
+Capire le funzioni principali delle tre code base del programma:
+- Funzione per il calcolo del fattoriale
+- Funzione per la generazione della CLI
+- Funzione per la generazione della GUI
+
+Le righe R e B si differenziano per i tre gruppi di codice:
+Codice per il calcolo del fattoriale:
+Relationship:
+- Comprendere che il calcolo della funzione n * factorial(n-1) ripetuto ciclicamente permette di avanzare nel calcolo del fattoriale.
+Blocks:
+- Distinguere i due blocchi
+
+\begin{verbatim}
+if n == 0{
+    return 1
+}
+\end{verbatim}
+
+e
+
+\begin{verbatim}
+return n*factorial(n-1)
+\end{verbatim}
+
+distinguendone le due funzioni: il primo è l'invariante di ciclo, che arresta la ricorsione, il secondo effettua il calcolo.
+
+Per quanto riguarda il codice per la generazione della CLI:
+Relationships:
+- Distinguere le parti salienti del codice: la fase di inserimento del dato e quella di elaborazione e visualizzazione del dato
+
+Blocks:
+Distinguere i 2 blocchi:
+
+\begin{verbatim}
+var n int
+fmt.Scan(&n)
+\end{verbatim}
+
+\begin{verbatim}
+fmt.Printf("The factorial of %d is: %d",n,factorial(n))
+\end{verbatim}
+
+Nel primo viene letto l'input dell'utente quando viene avviato il programma, nel secondo vengono stampati: il numero inserito, e il fattoriale di questo, calcolato nella funzione apposita.
+
+Per quanto riguarda il codice per la generazione della GUI:
+Relationship:
+Comprendere i vari elementi che compongono la GUI (finestra, griglia, etichetta e bottone) e come legarli insieme
+
+Blocks:
+Si considerino i diversi blocchi di codice che si ripresentano in maniera similare in tutto il codice proposto, ad esempio:
+
+\begin{verbatim}
+grid, err := gtk.GridNew()
+if err != nil {
+    log.Fatal("Unable to create grid:", err)
+}
+win.Add(grid)
+\end{verbatim}
+
+In questa parte di codice troviamo la creazione della variabile ''grid'' che servirà a inserire specificandone la posizione i vari elementi della GUI. La variabile viene aggiunta alla finestra (variabile win) con la funzione .Attach(). Insieme a ''grid'' viene dichiarata la variabile 
+''err'', che serve a gestire eventuali errori; questa gestione non deve esserci per forza nelle varie soluzioni proposte dagli studenti.
+
+Nel secondo blocco  troviamo  il cuore dell'esercizio,infatti qui viene specificato cosa deve fare il bottone una volta cliccato, ovvero leggere il numero scritto nella casella di testo, convertirlo da stringa a intero con Atoi() e infine usare il valore come parametro della funzione per calcolare il fattoriale.
+Si distinguono in maniera evidente i tre subgoal: 
+\begin{itemize}
+\item leggere la stringa (.GetText)
+ \item convertire da stringa a intero (.Atoi)
+ \item calcolare il fattoriale (factorial)
+\item tampare il risultato nell'etichetta creata precedentemente (.setText)
+\end{itemize}
+
+\begin{verbatim}
+  button.Connect("clicked", func() {
+  //leggere il testo dalla casella "entry"
+  text, err := entry.GetText()
+  if err != nil {
+  log.Fatal("Unable to get text from entry:", err)
+  }
+  //convertire da stringa a intero
+  n, err := strconv.Atoi(text)
+  if err != nil {
+  log.Fatal("Unable to convert text to int:", err)
+  }
+  //calcolare il fattoriale
+  result := factorial(n)
+  //stampare il risultato
+  resultLabel.SetText(fmt.Sprintf("The factorial of %d is : %d ", n, result))
+  })
+  \end{verbatim}
+  
+  \textbf{POSSIBILI MISCONCEPTION}:
+  Da una ricerca su internet, emerge che per le CLI non esistono vere e proprie misconception, probabilmente perché esse tendono a essere lineari e tendono a non avere un carico cognitivo eccessivamente elevato per imparare a strutturarle.
+  D'altro canto invece, si nota che le principali misconception per le GUI riguardano il design di esse, e riguardano principalmente la differenza sostanziale tra UI (User Interface) e UX (User Experience). La prima si riferisce a \textit{come} strutturare una GUI, mentre la seconda tende a studiare come migliorare al massimo l'interazione dell'utente rendendola più lineare e facile da comprendere.
+  In rete sono riportate numerose misconception che riguardano il design delle UI, ossia la sua concezione in termini di organizzazione della disposizione dei comandi e della visualizzazione dei risultati, così come della sequenza delle pagine/istruzioni che possono aprirsi usufruendo della GUI stessa.
+  Ulteriori misconception in termini di design riguardano l'uso dei colori, che deve sempre essere oggetto di attente valutazioni.
+  Tuttavia, questo tipo di misconception non si dovrebbe manifestare in questa attività didattica, che è finalizzata a evidenziare le differenze tra CLI e GUI in termini di usabilità e di peso della programmazione.
+  È comunque sicuramente opportuno che l'insegnante introduca in maniera sintetica il concetto dell'importanza di un buon design della UI e di verificarne l'usabilità con dei test su soggetti campione (test di usabilità).
+  
+  \textbf{Rubrica valutativa}
+  
+\begin{tabular}{|c|c|c|c|c|}
+  \hline
+  & Incompleto & Sufficiente & Buono & Eccellente \
+  \hline
+  Precisione e Organizzazione & Non si riesce a intendere bene come lo studente avrebbe voluto strutturare l'interfaccia & Lo studente ha compreso come si dovrebbe strutturare l'interfaccia ma non in maniera efficace & L'interfaccia è stata svolta correttamente, ma imprecisa in alcuni punti & L'interfaccia è stata svolta correttamente, in maniera efficace e funzionale \
+  \hline
+  Interazione & La struttura disegnata/progettata non risulta per nulla intuitiva & L'interfaccia non risulta completamente intuitiva, ma comunque sufficiente per il suo utilizzo & L'interfaccia risulta intuitiva e facilmente utilizzabile ma ci sono alcuni aspetti non completamente funzionanti & L'interfaccia risulta intuitiva, facilmente utilizzabile e con tutte le funzionalità richieste \
+  \hline
+  Codice & Il codice non viene presentato & Il codice viene presentato, ma risulta poco leggibile e non viene preso in considerazione l'utilizzo di metodi e di libreria esterne & Il codice viene presentato in maniera leggibile ma non viene preso in considerazione l'utilizzo di metodi e di libreria esterne & Il codice viene presentato in maniera leggibile, vengono usate le librerie e le soluzioni standard \
+  \hline
+  Totalità & 0-5 & 6-8 & 9-12 & 13-15 \
+  \hline
+  \end{tabular}
+  \end{center}
