@@ -3,10 +3,12 @@
 \subsection{Esercizio unplugged}
 Un operatore che si occupa di distribuire il contenuto di  un silos all'interno di svariati camion o carri ferroviari. Esistono condotte che collegano il silos ai vari punti di carico, che sono aperte e chiuse comandando delle valvole. 
 Esistono più possibilità per comandare le valvole:
-- O da linea di comando 
-- Con GUI semplificata
-- Con GUI con schema di impianto
+\begin{itemize}
+\item O da linea di comando 
+\item  Con GUI semplificata
+\item Con GUI con schema di impianto
 
+\end{itemize}
 deve avere una consolle di comando in modo che possa capire velocemente in quale container mandare il materiale.
 La consolle dal quale lo comanda come potrebbe essere strutturata, in che modo si può velocizzare e semplificare il lavoro dell'operatore?
 Ecco due soluzioni proposte:
@@ -26,11 +28,10 @@ Soluzione 3: GUI con schema di impianto:
   \caption{GUI con schema di impianto}
 \end{figure}
 
-\newpage
 
 \subsection{Esercizi di programmazione cli-based}
 Per iniziare a creare il programma, essendo GO un linguaggio che predilige la divisione in moduli, bisogna usare il comando seguente per creare il nuovo modulo nella cartella in cui si vuole creare il file con il codice sorgente \texttt{go mod init <nome\_modulo>}.\newline 
-Questo creerà un file _go.mod_ in cui viene specificato il nome del modulo (o package) e la versione di GO\@
+Questo creerà un file go.mod in cui viene specificato il nome del modulo (o package) e la versione di GO:
 A questo punto si può creare il file ''.go'' dove scrivere il codice sorgente.
 Questo codice deve svolgere i seguenti passaggi
 \begin{itemize}
@@ -38,8 +39,11 @@ Questo codice deve svolgere i seguenti passaggi
 \item Leggere il numero
 \item Calcolare il fattoriale del numero inserito
 \item Stampare il risultato
-Nb --> il linguaggio permette di inserire in un'unica istruzione gli ultimi due passaggi
-\begin{lstlisting}[language=Go]
+\end{itemize}
+Nb: il linguaggio permette di inserire in un'unica istruzione gli ultimi due passaggi
+
+\begin{verbatim}
+  
 package main
 
 import (
@@ -60,14 +64,14 @@ func main() {
 	fmt.Scan(&n)
 	fmt.Printf("The factorial of %d is: %d ", n, factorial(n))
 }
-\end{lstlisting}
+\end{verbatim}
 \begin{quote}
 In questo frammento di codice, troviamo due istruzioni caratteristiche del linguaggio, ovvero:
-- package main, serve identificare dove andrà la funzione _main_ che serve a dare un inizio al codice.
-- import (''fmt''), questa parte serve a dire che librerie verranno importate nel codice, fmt è la libreria standard di Go che si occupa di fornire le funzioni per elaborare I/O\@ la sua corrispondente in C è _stdio_
-
 \end{quote}
-\newpage
+\begin{itemize}
+\item package main, serve identificare dove andrà la funzione \emph{main} che serve a dare un inizio al codice.
+\item  import ''fmt'', questa parte serve a dire che librerie verranno importate nel codice, fmt è la libreria standard di Go che si occupa di fornire le funzioni per elaborare I/O la sua corrispondente in C è \emph{stdio}
+\end{itemize}
 \subsection{Esercizi di programmazione gui-based}
 Analogamente alla parte precedente, creiamo una cartella un'altra cartella di lavoro per il medesimo programma ma con una GUI, e generiamo il modulo con il comando spiegato precedentemente. Essendo una GUI più complicata da costruire, il codice sorgente sarà nettamente più lungo, infatti non useremo una libreria standard ma una libreria esterna, che si può facilmente installare attraverso il comando:
 \texttt{go get github.com/gotk3/gotk3/gtk} \newline
@@ -77,12 +81,13 @@ A questo punto si può creare il codice sorgente che svolga  le seguenti fasi:
 \begin{itemize}
 \item Creare una prima finestra che poi andrà riempita con le varie parti
 \item Creare una griglia e un' ''etichetta'' dove andremo a mettere un'istruzione per l'utente su cosa deve fare e un'etichetta dove verrà mostrato il risultato
-\item Un ''entry'' dove l'utente inserirà i numeri (NB  verranno letti come una stringa, quindi verrà convertito con la funzione _Atoi()_)
+\item Un ''entry'' dove l'utente inserirà i numeri (NB  verranno letti come una stringa, quindi verrà convertito con la funzione Atoi())
 \item Un bottone per calcolare il fattoriale del numero inserito
 \item Infine ''collegare'' il bottone alla funzione effettiva per ottenere il fattoriale
 \end{itemize}
-NB -> La libreria esterna non ha una vera e propria gestione degli errori, per questo nel codice sorgente insieme ogni dichiarazione di una variabile per creare le varie parti della GUI viene dichiarata una variabile _err_ e viene sempre controllato che sia nulla. infatti nel caso questa variabile abbia un valore non nullo vuol dire che qualcosa è andato storto nella creazione del componente.
-\begin{lstlisting}[language=Go]
+NB: La libreria esterna non ha una vera e propria gestione degli errori, per questo nel codice sorgente insieme ogni dichiarazione di una variabile per creare le varie parti della GUI viene dichiarata una variabile err e viene sempre controllato che sia nulla. infatti nel caso questa variabile abbia un valore non nullo vuol dire che qualcosa è andato storto nella creazione del componente.
+\begin{verbatim}
+  
   package main
   
   import (
@@ -176,5 +181,5 @@ NB -> La libreria esterna non ha una vera e propria gestione degli errori, per q
   
     gtk.Main()
   }
-  \end{lstlisting}
+  \end{verbatim}
   
