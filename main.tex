@@ -1,14 +1,43 @@
 \documentclass{article}
 \usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{listingsutf8}
+\usepackage{xcolor}
 
 \author{Francesco Mauro}
 \date{2023}
 \title{Relazione Metodologie e Tecnologie didattiche per l'informatica}
 
+
+\lstset{
+  language=Go,
+  basicstyle=\scriptsize\ttfamily,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{green},
+  stringstyle=\color{red},
+  breaklines=true,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\small,
+  numbersep=5pt,
+  backgroundcolor=\color{white},
+  tabsize=2,
+  morekeywords={package, import, func, var, const},
+}
+
+
+
 \begin{document}
 \maketitle
 \tableofcontents
 \include{report/motivazione}
+<<<<<<< Updated upstream
+=======
+\include{report/prerequisiti}
+\include{report/contenuti}
+\include{report/traguardi}
+>>>>>>> Stashed changes
 \include{report/materiali}
 \include{report/sviluppo}
 \include{report/guida_per_gli_insegnanti}

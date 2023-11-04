@@ -3,4 +3,10 @@
 *.fdb_latexmk
 *.fls
 *.toc
+<<<<<<< Updated upstream
 *.synctex.gz
+=======
+*.synctex.gz
+*.pdf
+*.out
+>>>>>>> Stashed changes
