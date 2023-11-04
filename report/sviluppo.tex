@@ -13,14 +13,19 @@ deve avere una consolle di comando in modo che possa capire velocemente in quale
 La consolle dal quale lo comanda come potrebbe essere strutturata, in che modo si può velocizzare e semplificare il lavoro dell'operatore?
 Ecco due soluzioni proposte:
 Soluzione  1 con CLI: istruzione del tipo: \texttt{switch valve N on/off} \newline
-Soluzione 2 con GUI semplificata:
-  \includegraphics[width=0.3\textwidth]{img/gui_sempl.png}
-
-
-Soluzione 3 GUI con schema di impianto:
-  \includegraphics[width=0.3\textwidth]{img/gui_con_schema.png}
-
-
+\begin{figure}
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/gui_sempl.png}
+    \caption{Solution 2 with simplified GUI}
+  \end{subfigure}%
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/gui_con_schema.png}
+    \caption{Solution 3 GUI with system diagram}
+  \end{subfigure}
+  \caption{Two Solutions}
+\end{figure}
 \subsection{Esercizi di programmazione cli-based}
 Per iniziare a creare il programma, essendo GO un linguaggio che predilige la divisione in moduli, bisogna usare il comando seguente per creare il nuovo modulo nella cartella in cui si vuole creare il file con il codice sorgente \texttt{go mod init <nome\_modulo>}.\newline 
 Questo creerà un file go.mod in cui viene specificato il nome del modulo (o package) e la versione di GO:
